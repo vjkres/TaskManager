@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   error = '';
   hide = true;
   ngOnInit() {
-    if (this.loginService.isLoggedin) {
+    if (this.loginService.isUserLoggedin()) {
       this.router.navigateByUrl('/');
     }
   }
@@ -39,7 +39,10 @@ export class LoginComponent implements OnInit {
         this.error = respObj.error;
       } else if (respObj.status === 1) {
         let url = this.loginService.redirectUrl;
-        url = url ? url : '/';
+        console.log('URL:' + url);
+        url = url && url !== undefined ? url : '/';
+        console.log('URL:' + url);
+        url = url !== '/login' ? url : '/';
         this.router.navigateByUrl(url);
       }
     } else {

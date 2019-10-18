@@ -1,32 +1,47 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { stringify } from '@angular/compiler/src/util';
-
+import { LocalDB } from '../utils/tmdata';
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
   private messageSource = new BehaviorSubject<any>({});
   currentMessage = this.messageSource.asObservable();
-  isLoggedin = false;
   redirectUrl: string;
-  constructor() {}
+  constructor(private localDB: LocalDB) {
+    this.messageSource.next(this.getLoggedInUser());
+  }
 
+  //
+  isUserLoggedin = () => {
+    const user = this.localDB.getUser();
+    //console.log('user', user, user && user.isLoggedin === true);
+    return user && user.isLoggedin === true;
+  };
+
+  getLoggedInUser = () => {
+    const user = this.localDB.getUser();
+    return user;
+  };
+
+  //
   doLogout = () => {
-    this.isLoggedin = false;
+    this.localDB.removeUser();
     this.messageSource.next({});
   };
+
+  //
   doLogin = login => {
-    let respObj = { status: 0, error: 'User Name and Password not match' };
+    const respObj = { status: 0, error: 'User Name and Password not match' };
     if (login) {
-      let user = users.find(user => user.userName === login.userName);
+      const user = users.find(user => user.userName === login.userName);
       if (!user) {
         respObj.error = 'User Name not matched, Please register';
       } else if (user.password === login.password) {
         respObj.status = 1;
-        this.isLoggedin = true;
-        let userObj = { userName: user.userName, fullName: user.fullName };
+        const userObj = { userName: user.userName, fullName: user.fullName, isLoggedin: true };
         this.messageSource.next(userObj);
+        this.localDB.storeUser(userObj);
       } else {
         respObj.error = 'password not matched, Please try again';
       }
@@ -36,6 +51,7 @@ export class LoginService {
     return respObj;
   };
 
+  //
   sendEmail = form => {
     console.log('forgotupform', form);
     const respObj = { status: 1, message: 'Email sent, Please check' };

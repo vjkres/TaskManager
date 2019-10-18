@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { LoginService } from '../../tmservices/login.service';
+import { startWith, tap, delay } from 'rxjs/operators';
 @Component({
   selector: 'app-tmnav',
   templateUrl: './tmnav.component.html',
@@ -25,17 +26,25 @@ export class TmnavComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver, private loginService: LoginService) {}
 
   ngOnInit() {
-    this.loginService.currentMessage.subscribe(user => {
-      //console.log('nav=>', userStr);
-      if (user && user.fullName) {
-        this.welcomestr = 'Welcome ' + user.fullName;
-        this.isLoggedIn = true;
-      } else {
-        this.welcomestr = 'Welcome Guest';
-        this.isLoggedIn = false;
-      }
-    });
+    this.loginService.currentMessage
+      .pipe(
+        startWith(null),
+        delay(0),
+        tap(user => this.loginCallback(user))
+      )
+      .subscribe();
   }
+
+  loginCallback = user => {
+    //console.log('nav=>', user);
+    if (user && user.fullName) {
+      this.welcomestr = 'Welcome ' + user.fullName;
+      this.isLoggedIn = true;
+    } else {
+      this.welcomestr = 'Welcome Guest';
+      this.isLoggedIn = false;
+    }
+  };
 
   selectedLink = slink => {
     this.menuLinks.forEach(link => {

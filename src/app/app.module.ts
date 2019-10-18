@@ -10,6 +10,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './tmservices/login.service';
+import { LocalDB } from './utils/tmdata';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { LoginService } from './tmservices/login.service';
     LayoutModule,
     DragDropModule
   ],
-  providers: [LoginService],
+  providers: [LoginService, LocalDB],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="User name" formControlName="userName">
+            <input matInput placeholder="Username" formControlName="userName">
             <mat-error *ngIf="loginForm.controls['userName'].hasError('required')">
               User name is <strong>required</strong>
             </mat-error>
@@ -17,7 +17,10 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput type="password" placeholder="Password" formControlName="password">
+            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password">
+            <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
             <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
               Password is <strong>required</strong>
             </mat-error>
@@ -30,6 +33,11 @@
         </div>
       </div>
     </mat-card-content>
+    <div class="row" *ngIf='error'>
+      <div class="col">
+        <span class="error"> {{error}} </span>
+      </div>
+    </div>
     <div class="row">
       <div class="col">
         <mat-card-actions>
@@ -39,16 +47,15 @@
     </div>
     <div class="row">
       <div class="col">
-        <button mat-button type="button">
-          Forgot Password
+        <button mat-button type="button" routerLink='/forgotup'>
+          Forgot Username/Password
         </button>
       </div>
-      <div class="col">
-        <button mat-button type="button">
-          Forgot User Name
+      <div class="col" style="text-align: right;">
+        <button mat-button type="button" routerLink='/registration'>
+          Register
         </button>
       </div>
     </div>
-
   </mat-card>
 </form>

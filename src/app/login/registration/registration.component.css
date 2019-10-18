@@ -2,9 +2,14 @@
   width: 100%;
 }
 
-.shipping-card {
+.reg-card {
+  max-width: 400px;
   min-width: 120px;
   margin: 20px auto;
+}
+
+.mat-card-actions {
+  text-align: center;
 }
 
 .mat-radio-button {

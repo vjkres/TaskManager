@@ -1,0 +1,45 @@
+<form [formGroup]="forgotupForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="forgotup-card">
+    <mat-card-header>
+      <mat-card-title>Forgot Username/password</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-radio-group formControlName="action">
+            <mat-radio-button value="password">Forgot password</mat-radio-button>
+            <mat-radio-button value="username">forgot Username</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput type="email" placeholder="email" formControlName="email">
+            <mat-error *ngIf="forgotupForm.controls['email'].hasError('required')">
+              email is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="forgotupForm.controls['email'].hasError('email')">
+              valid email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <div class="row">
+      <div class="col" *ngIf='error'>
+        <span class="error"> {{error}} </span>
+      </div>
+      <div class="col" *ngIf='message'>
+        <span class="smessage"> {{message}} </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </mat-card-actions>
+      </div>
+    </div>
+  </mat-card>
+</form>

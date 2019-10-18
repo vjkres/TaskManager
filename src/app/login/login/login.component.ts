@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-
+import { Router } from '@angular/router';
+import { LoginService } from '../../tmservices/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,10 +22,28 @@ export class LoginComponent implements OnInit {
     rememberMe: []
   });
 
-  ngOnInit() {}
-  constructor(private fb: FormBuilder) {}
+  error = '';
+  hide = true;
+  ngOnInit() {
+    if (this.loginService.isLoggedin) {
+      this.router.navigateByUrl('/');
+    }
+  }
+  constructor(private fb: FormBuilder, private router: Router, private loginService: LoginService) {}
 
   onSubmit() {
-    alert('Thanks!' + this.loginForm.valid);
+    this.error = '';
+    if (this.loginForm.valid) {
+      const respObj = this.loginService.doLogin(this.loginForm.value);
+      if (respObj.status === 0) {
+        this.error = respObj.error;
+      } else if (respObj.status === 1) {
+        let url = this.loginService.redirectUrl;
+        url = url ? url : '/';
+        this.router.navigateByUrl(url);
+      }
+    } else {
+      this.error = 'Please enter valid values';
+    }
   }
 }

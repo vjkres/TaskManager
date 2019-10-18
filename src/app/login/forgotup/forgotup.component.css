@@ -2,7 +2,7 @@
   width: 100%;
 }
 
-.login-card {
+.forgotup-card {
   max-width: 400px;
   min-width: 120px;
   margin: 20px auto;
@@ -26,7 +26,21 @@
   text-align: center;
 }
 
+.mat-radio-button {
+  margin-left: 50px;
+}
+
+.mat-card-header,
+.row {
+  margin-bottom: 30px;
+}
+
 .error {
   color: red;
+  font-size: small;
+}
+
+.smessage {
+  color: green;
   font-size: small;
 }

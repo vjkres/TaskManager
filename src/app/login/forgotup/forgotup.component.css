@@ -1,0 +1,46 @@
+.full-width {
+  width: 100%;
+}
+
+.forgotup-card {
+  max-width: 400px;
+  min-width: 120px;
+  margin: 20px auto;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.col:last-child {
+  margin-right: 0;
+}
+
+.mat-card-actions {
+  text-align: center;
+}
+
+.mat-radio-button {
+  margin-left: 50px;
+}
+
+.mat-card-header,
+.row {
+  margin-bottom: 30px;
+}
+
+.error {
+  color: red;
+  font-size: small;
+}
+
+.smessage {
+  color: green;
+  font-size: small;
+}

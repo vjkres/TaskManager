@@ -1,14 +1,24 @@
 export class LocalDB {
   constructor() {}
+
   getData = key => {
+    const datastr = localStorage.getItem(key);
+    return datastr;
+  };
+
+  storeData = (key, datastr) => {
+    localStorage.setItem(key, datastr);
+  };
+
+  getJSONData = key => {
     const datastr = localStorage.getItem(key);
     const data = datastr ? JSON.parse(datastr) : null;
     return data;
   };
 
-  storeData = (key, data) => {
-    const datatr = JSON.stringify(data);
-    localStorage.setItem(key, datatr);
+  storeJSONData = (key, data) => {
+    const datastr = JSON.stringify(data);
+    localStorage.setItem(key, datastr);
   };
 
   removeData = key => {

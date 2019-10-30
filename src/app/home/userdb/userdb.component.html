@@ -1,0 +1,136 @@
+<div class="grid-container">
+  <!-- <h1 class="mat-h1">Dashboard</h1> -->
+  <mat-grid-list cols="2" rowHeight="350px">
+    <!-- Projects starts -->
+    <mat-grid-tile>
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Projects<small>(ongoing)</small>
+
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menupm" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menupm="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <hr />
+        <mat-card-content class="dashboard-card-content">
+          <table>
+            <tr>
+              <th style="width: 20px;"> Id </th>
+              <th> Name </th>
+            </tr>
+            <tr *ngFor="let proj of projects; let idx = index">
+              <td> {{idx+1}} </td>
+              <td>
+                <button mat-button color="primary" routerLink="/project/{{proj.id}}">{{proj.title}}</button>
+              </td>
+            </tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <!-- Projects ends -->
+    <!-- Resources starts -->
+    <mat-grid-tile>
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Resources<small>(working)</small>
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menurm" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menurm="matMenu" xPosition="before">
+              <button mat-menu-item>Expand1</button>
+              <button mat-menu-item>Remove1</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <hr />
+        <mat-card-content class="dashboard-card-content">
+          <table>
+            <tr>
+              <th style="width: 20px;"> Id </th>
+              <th style="width: 120px;"> Name </th>
+              <th> User Id </th>
+            </tr>
+            <tr *ngFor="let user of resources; let idx = index">
+              <td> {{idx+1}} </td>
+              <td> {{user.fullName}} </td>
+              <td> {{user.userName}} </td>
+            </tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <!-- Resources ends -->
+    <!-- New Projects starts -->
+    <mat-grid-tile>
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Projects<small>(new)</small>
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menupmn" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menupmn="matMenu" xPosition="before">
+              <button mat-menu-item>Expand2</button>
+              <button mat-menu-item>Remove2</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <hr />
+        <mat-card-content class="dashboard-card-content">
+          <table>
+            <tr>
+              <th style="width: 20px;"> Id </th>
+              <th> Name </th>
+            </tr>
+            <tr *ngFor="let proj of projectsnew; let idx = index">
+              <td> {{idx+1}} </td>
+              <td> {{proj.title}} </td>
+            </tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <!-- new Projects ends -->
+    <!-- new Resources starts -->
+    <mat-grid-tile>
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Resources<small>(new)</small>
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menurmn" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menurmn="matMenu" xPosition="before">
+              <button mat-menu-item>Expand3</button>
+              <button mat-menu-item>Remove3</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <hr />
+        <mat-card-content class="dashboard-card-content">
+          <table>
+            <tr>
+              <th style="width: 20px;"> Id </th>
+              <th style="width: 120px;"> Name </th>
+              <th> User Id </th>
+            </tr>
+            <tr *ngFor="let user of resourcesnew; let idx = index">
+              <td> {{idx+1}} </td>
+              <td> {{user.fullName}} </td>
+              <td> {{user.userName}} </td>
+            </tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <!-- new Resources ends -->
+  </mat-grid-list>
+</div>

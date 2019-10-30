@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { LoginService } from '../../tmservices/login.service';
 import { startWith, tap, delay } from 'rxjs/operators';
+import { ProjectService } from 'src/app/tmservices/project.service';
 @Component({
   selector: 'app-tmnav',
   templateUrl: './tmnav.component.html',
@@ -20,12 +21,26 @@ export class TmnavComponent implements OnInit {
   menuLinks = [
     //
     { title: 'Home', url: '', selected: false },
+    { title: 'Projects', url: '/projects', selected: false },
     { title: 'Tasks', url: '/tasks', selected: false },
+    { title: 'Users', url: '/users', selected: false },
     { title: 'DRD', url: '/drd', selected: false }
   ];
-  constructor(private breakpointObserver: BreakpointObserver, private loginService: LoginService) {}
+  //
+  sorgs = '';
+  sorgsName = '';
+  orgsLinks = [];
+
+  constructor(
+    //
+    private breakpointObserver: BreakpointObserver,
+    private loginService: LoginService,
+    private projectService: ProjectService
+  ) {}
 
   ngOnInit() {
+    this.orgsLinks = this.projectService.getOrgs();
+    this.populateOrgLink();
     this.loginService.currentMessage
       .pipe(
         startWith(null),
@@ -51,4 +66,24 @@ export class TmnavComponent implements OnInit {
       link.selected = link.url === slink;
     });
   };
+
+  selectedOrgs = id => {
+    //console.log('selectedOrgs=>', id);
+    this.projectService.saveSelectedOrgs(id);
+    this.populateOrgLink();
+  };
+  populateOrgLink() {
+    const id = this.projectService.getSelectedOrgs();
+    //console.log('selectedOrgs=>', id);
+    this.orgsLinks.map(orgs => {
+      orgs.selected = orgs.id === id;
+      if (orgs.selected) {
+        this.sorgsName = orgs.title;
+
+        this.sorgs = id;
+      }
+    });
+
+    //this.message.emit(obj);
+  }
 }

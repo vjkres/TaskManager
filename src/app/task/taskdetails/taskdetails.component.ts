@@ -10,9 +10,9 @@ import { TaskdetailsDataSource, TaskdetailsItem } from './taskdetails-datasource
   styleUrls: ['./taskdetails.component.css']
 })
 export class TaskdetailsComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: false}) sort: MatSort;
-  @ViewChild(MatTable, {static: false}) table: MatTable<TaskdetailsItem>;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatTable, { static: false }) table: MatTable<TaskdetailsItem>;
   dataSource: TaskdetailsDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */

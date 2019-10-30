@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { LocalDB } from '../utils/tmdata';
+import { UserService } from './user.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -8,7 +9,7 @@ export class LoginService {
   private messageSource = new BehaviorSubject<any>({});
   currentMessage = this.messageSource.asObservable();
   redirectUrl: string;
-  constructor(private localDB: LocalDB) {
+  constructor(private localDB: LocalDB, private userService: UserService) {
     this.messageSource.next(this.getLoggedInUser());
   }
 
@@ -34,6 +35,7 @@ export class LoginService {
   doLogin = login => {
     const respObj = { status: 0, error: 'User Name and Password not match' };
     if (login) {
+      let users = this.userService.getUsers();
       const user = users.find(user => user.userName === login.userName);
       if (!user) {
         respObj.error = 'User Name not matched, Please register';
@@ -58,9 +60,3 @@ export class LoginService {
     return respObj;
   };
 }
-
-const users = [
-  //
-  { userName: 'admin', password: 'admin', role: 'ADMIN', fullName: 'Admin' },
-  { userName: 'nuser', password: 'nuser', role: 'USER', fullName: 'User' }
-];

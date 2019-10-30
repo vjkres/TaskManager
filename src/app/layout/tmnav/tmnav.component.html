@@ -10,8 +10,20 @@
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Task Manager</span>
-      <span class="fill-remaining-space"></span>
+      <span>Task Manager </span>
+      <a routerLink="" class="homeicon">
+        <mat-icon aria-hidden="false" aria-label="Home">home</mat-icon>
+      </a>
+      <span class="middle_menu">
+        <button mat-button [matMenuTriggerFor]="appMenu">
+          <span class='orgmenu'> {{sorgsName}}
+            <mat-icon>arrow_drop_down</mat-icon>
+          </span>
+        </button>
+        <mat-menu #appMenu="matMenu">
+          <button mat-menu-item *ngFor='let orgs of orgsLinks' (click)='selectedOrgs(orgs.id)'>{{orgs.title}}</button>
+        </mat-menu>
+      </span>
       <span class='usertitle'> {{welcomestr}} </span>
       <button *ngIf='!isLoggedIn' mat-button routerLink='/login'>Login</button>
       <button *ngIf='isLoggedIn' mat-button routerLink='/logout'>Logout</button>

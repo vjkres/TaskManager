@@ -1,0 +1,3 @@
+<div class="dbmenu">
+  <button mat-button *ngFor='let orgs of orgsLinks' [color]='orgs.selected?"accent":""' (click)='changeORG(orgs.id)'>{{orgs.title}}</button>
+</div>

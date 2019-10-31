@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { LoginService } from '../../tmservices/login.service';
 import { startWith, tap, delay } from 'rxjs/operators';
-import { ProjectService } from 'src/app/tmservices/project.service';
+import { OrgsService } from 'src/app/tmservices/orgs.service';
 @Component({
   selector: 'app-tmnav',
   templateUrl: './tmnav.component.html',
@@ -35,11 +35,11 @@ export class TmnavComponent implements OnInit {
     //
     private breakpointObserver: BreakpointObserver,
     private loginService: LoginService,
-    private projectService: ProjectService
+    private orgsService: OrgsService
   ) {}
 
   ngOnInit() {
-    this.orgsLinks = this.projectService.getOrgs();
+    this.orgsLinks = this.orgsService.getOrgs();
     this.populateOrgLink();
     this.loginService.currentMessage
       .pipe(
@@ -69,11 +69,11 @@ export class TmnavComponent implements OnInit {
 
   selectedOrgs = id => {
     //console.log('selectedOrgs=>', id);
-    this.projectService.saveSelectedOrgs(id);
+    this.orgsService.saveSelectedOrgs(id);
     this.populateOrgLink();
   };
   populateOrgLink() {
-    const id = this.projectService.getSelectedOrgs();
+    const id = this.orgsService.getSelectedOrgs();
     //console.log('selectedOrgs=>', id);
     this.orgsLinks.map(orgs => {
       orgs.selected = orgs.id === id;

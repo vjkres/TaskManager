@@ -56,12 +56,12 @@
             <tr>
               <th style="width: 20px;"> Id </th>
               <th style="width: 120px;"> Name </th>
-              <th> User Id </th>
+              <th> Email </th>
             </tr>
             <tr *ngFor="let user of resources; let idx = index">
               <td> {{idx+1}} </td>
               <td> {{user.fullName}} </td>
-              <td> {{user.userName}} </td>
+              <td> {{user.email}} </td>
             </tr>
           </table>
         </mat-card-content>
@@ -120,12 +120,12 @@
             <tr>
               <th style="width: 20px;"> Id </th>
               <th style="width: 120px;"> Name </th>
-              <th> User Id </th>
+              <th> Email </th>
             </tr>
             <tr *ngFor="let user of resourcesnew; let idx = index">
               <td> {{idx+1}} </td>
               <td> {{user.fullName}} </td>
-              <td> {{user.userName}} </td>
+              <td> {{user.email}} </td>
             </tr>
           </table>
         </mat-card-content>

@@ -33,15 +33,15 @@ export class LoginService {
 
   //
   doLogin = login => {
-    const respObj = { status: 0, error: 'User Name and Password not match' };
+    const respObj = { status: 0, error: 'Email and Password not match' };
     if (login) {
       let users = this.userService.getUsers();
-      const user = users.find(user => user.userName === login.userName);
+      const user = users.find(user => user.email === login.email);
       if (!user) {
-        respObj.error = 'User Name not matched, Please register';
+        respObj.error = 'Email not matched, Please register';
       } else if (user.password === login.password) {
         respObj.status = 1;
-        const userObj = { userName: user.userName, fullName: user.fullName, isLoggedin: true };
+        const userObj = { email: user.email, fullName: user.fullName, isLoggedin: true };
         this.messageSource.next(userObj);
         this.localDB.storeUser(userObj);
       } else {

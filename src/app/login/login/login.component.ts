@@ -9,10 +9,10 @@ import { LoginService } from '../../tmservices/login.service';
 })
 export class LoginComponent implements OnInit {
   loginForm = this.fb.group({
-    userName: [
+    email: [
       //
       null,
-      Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(15)])
+      Validators.compose([Validators.required, Validators.email])
     ],
     password: [
       //

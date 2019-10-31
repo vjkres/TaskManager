@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
+import { LocalDB } from '../utils/tmdata';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  constructor() {}
+  private messageSource = new BehaviorSubject<any>({});
+  currentMessage = this.messageSource.asObservable();
+
+  constructor(private localDB: LocalDB) {
+    this.messageSource.next([]);
+  }
 
   getUsers = () => users;
+
   getResources = orgs => {
     if (orgs === 'general') {
       return users;
@@ -25,17 +33,17 @@ export class UserService {
 
 const users = [
   //
-  { userName: 'admin', password: 'admin', role: 'ADMIN', fullName: 'Admin' },
-  { userName: 'nuser', password: 'nuser', role: 'USER', fullName: 'User' }
+  { email: 'admin@mail.com', password: 'admin', fullName: 'Admin' },
+  { email: 'nuser@mail.com', password: 'nuser', fullName: 'User' }
 ];
 
 const ousers = [
   //
-  { userName: 'admin1', password: 'admin', role: 'ADMIN', fullName: 'Admin1' },
-  { userName: 'nuser1', password: 'nuser', role: 'USER', fullName: 'User1' }
+  { email: 'admin1@mail.com', password: 'admin', fullName: 'Admin1' },
+  { email: 'nuser1@mail.com', password: 'nuser', fullName: 'User1' }
 ];
 
 const usersnew = [
   //
-  { userName: 'jatwin', password: 'admin', role: 'ADMIN', fullName: 'Jatwin' }
+  { email: 'jatwin@mail.com', password: 'admin', fullName: 'Jatwin' }
 ];

@@ -18,6 +18,7 @@ import { UserService } from './tmservices/user.service';
 import { ProjectService } from './tmservices/project.service';
 import { TaskService } from './tmservices/task.service';
 import { OrgmenuComponent } from './layout/orgmenu/orgmenu.component';
+import { OrgsService } from './tmservices/orgs.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { OrgmenuComponent } from './layout/orgmenu/orgmenu.component';
     LayoutModule,
     DragDropModule
   ],
-  providers: [LocalDB, LoginService, UserService, ProjectService, TaskService],
+  providers: [LocalDB, OrgsService, LoginService, UserService, ProjectService, TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

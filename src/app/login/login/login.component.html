@@ -2,15 +2,18 @@
   <mat-card class="login-card">
     <mat-card-header>
       <mat-card-title>Login</mat-card-title>
-      (admin/admin, nuser/nuser)
+      <small>(admin@mail.com/admin, nuser@mail.com/nuser)</small>
     </mat-card-header>
     <mat-card-content>
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Username" formControlName="userName">
-            <mat-error *ngIf="loginForm.controls['userName'].hasError('required')">
-              User name is <strong>required</strong>
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+              Enter valid email
             </mat-error>
           </mat-form-field>
         </div>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 //import { map } from 'rxjs/operators';
 import { ProjectService } from 'src/app/tmservices/project.service';
 import { UserService } from 'src/app/tmservices/user.service';
+import { OrgsService } from 'src/app/tmservices/orgs.service';
 
 @Component({
   selector: 'app-userdb',
@@ -16,8 +17,13 @@ export class UserdbComponent {
   projectsnew = [];
   resourcesnew = [];
 
-  constructor(private projectService: ProjectService, private userService: UserService) {
-    projectService.currentMessage.subscribe(obj => {
+  constructor(
+    //
+    private projectService: ProjectService,
+    private userService: UserService,
+    private orgsService: OrgsService
+  ) {
+    orgsService.currentMessage.subscribe(obj => {
       console.log('Proj Subscribe = ', obj);
       this.sorgs = obj;
       this.populateData();

@@ -7,12 +7,14 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Username" formControlName="userName">
-            <mat-error *ngIf="regForm.controls['userName'].hasError('required')">
-              Username is <strong>required</strong> and should be 5 to 25 chars
+            <input matInput placeholder="Email" formControlName="email" type='email'>
+            <mat-error *ngIf="regForm.controls['email'].hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="regForm.controls['email'].hasError('email')">
+              Enter valid email
             </mat-error>
           </mat-form-field>
-
         </div>
       </div>
       <div class="row">
@@ -41,26 +43,9 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Email" formControlName="email" type='email'>
-            <mat-error *ngIf="regForm.controls['email'].hasError('required')">
-              Email is <strong>required</strong>
-            </mat-error>
-            <mat-error *ngIf="regForm.controls['email'].hasError('email')">
-              Enter valid email
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <mat-select placeholder="Role" formControlName="role">
-              <mat-option *ngFor="let role of roles" [value]="role.code">
-                {{ role.name }}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="regForm.controls['role'].hasError('required')">
-              Role is <strong>required</strong>
+            <input matInput placeholder="Phone" formControlName="phone">
+            <mat-error *ngIf="regForm.controls['phone'].hasError('required')">
+              Phone is <strong>required</strong> and should be 10 to 12 chars
             </mat-error>
           </mat-form-field>
         </div>

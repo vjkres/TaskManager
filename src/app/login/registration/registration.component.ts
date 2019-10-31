@@ -8,14 +8,16 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class RegistrationComponent {
   regForm = this.fb.group({
-    userName: [null, Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(25)])],
+    email: [null, Validators.compose([Validators.required, Validators.email])],
     password: [null, Validators.required],
     fullName: [null, Validators.required],
-    email: [null, Validators.compose([Validators.required, Validators.email])],
-    role: [null, Validators.required]
+    phone: [
+      //
+      null,
+      Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(12)])
+    ]
   });
   hide = true;
-  roles = [{ name: 'Admin', code: 'ADMIN' }, { name: 'User', code: 'USER' }];
   constructor(private fb: FormBuilder) {}
 
   onSubmit() {

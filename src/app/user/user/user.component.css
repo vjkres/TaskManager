@@ -1,0 +1,46 @@
+/* Structure */
+table {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.user_table {
+  padding-left: 25px;
+  padding-top: 20px;
+  width: 97%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.filterTxt {
+
+  background-color: white;
+  min-width: 200px;
+  max-width: 400px;
+  height: 40px;
+  padding: 0px;
+}
+
+.mat-mini-fab {
+  margin: 10px;
+}
+
+.mat-header-row {
+  background: lightgray;
+
+}
+
+.mat-header-cell {
+  font-weight: bold;
+}
+
+.highlight {
+  background: lightblue;
+}

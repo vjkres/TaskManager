@@ -1,0 +1,20 @@
+.row {
+  padding-left: 10px;
+}
+
+.custom-card {
+  max-width: 300px;
+  height: 180px;
+  margin-left: 10px;
+  margin-top: 10px;
+
+}
+
+.custom-header-image {
+  background-image: url('/assets/avatar2.jpg');
+  background-size: cover;
+}
+
+.mat-card-content {
+  margin-bottom: 2px;
+}

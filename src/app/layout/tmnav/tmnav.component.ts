@@ -24,7 +24,9 @@ export class TmnavComponent implements OnInit {
     { title: 'Projects', url: '/projects', selected: false },
     { title: 'Tasks', url: '/tasks', selected: false },
     { title: 'Users', url: '/users', selected: false },
-    { title: 'DRD', url: '/drd', selected: false }
+    { title: 'DRD', url: '/drd', selected: false },
+    { title: 'Contacts', url: '/contacts', selected: false },
+    { title: 'Menu', url: '/menudb', selected: false }
   ];
   //
   sorgs = '';

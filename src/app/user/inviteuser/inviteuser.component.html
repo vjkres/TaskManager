@@ -1,0 +1,35 @@
+<h1 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle>Invite User</h1>
+<div class="row" *ngIf='error'>
+  <div class="col">
+    <span class="error"> {{error}} </span>
+  </div>
+</div>
+<div>
+  <form [formGroup]="data" novalidate>
+    <mat-form-field class="full-width">
+      <input matInput formControlName='email' placeholder="Email" type='email' required>
+      <mat-error *ngIf="data.controls['email'].hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="data.controls['email'].hasError('email')">
+        Enter valid email
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput formControlName='fullName' placeholder="Full Name" required>
+      <mat-error *ngIf="data.controls['fullName'].hasError('required')">
+        Full name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput formControlName='phone' placeholder="Phone">
+      <mat-error *ngIf="data.controls['phone'].hasError('required')">
+        Phone is <strong>required</strong> and should be 10 to 12 chars
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div class="actionsDiv">
+  <button mat-button color="warn" (click)="closeWin()">Close</button>
+  <button mat-button color="primary" (click)="onOKClick()" cdkFocusInitial>Invite</button>
+</div>

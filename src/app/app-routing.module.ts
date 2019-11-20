@@ -15,6 +15,9 @@ import { ProjectComponent } from './proj/project/project.component';
 import { ProjectsComponent } from './proj/projects/projects.component';
 import { UsersComponent } from './user/users/users.component';
 import { UserComponent } from './user/user/user.component';
+import { ContactsComponent } from './contact/contacts/contacts.component';
+import { MenudbComponent } from './home/menudb/menudb.component';
+import { MenudetailComponent } from './home/menudetail/menudetail.component';
 
 const routes: Routes = [
   //
@@ -31,6 +34,9 @@ const routes: Routes = [
   { path: 'project/:projid', component: ProjectComponent },
   { path: 'users', component: UsersComponent },
   { path: 'user/:userid', component: UserComponent },
+  { path: 'contacts', component: ContactsComponent },
+  { path: 'menudb', component: MenudbComponent },
+  { path: 'menudetail', component: MenudetailComponent },
 
   //should be last one
   { path: '**', component: PageNotFoundComponent }
@@ -57,5 +63,7 @@ export const RouteComponents = [
   ProjectComponent,
   UsersComponent,
   UserComponent,
+  ContactsComponent,
+  MenudbComponent,
   PageNotFoundComponent
 ];

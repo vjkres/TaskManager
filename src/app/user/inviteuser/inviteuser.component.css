@@ -1,0 +1,24 @@
+.mat-dialog-title {
+  background: lightblue;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.actionsDiv {
+  text-align: center;
+}
+
+.error {
+  color: red;
+  font-size: 11px;
+}
+
+.mat-dialog-title:active {
+  cursor: grabbing;
+}
+
+.mat-dialog-title {
+  cursor: grab;
+}

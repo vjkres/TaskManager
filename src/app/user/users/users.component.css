@@ -34,13 +34,14 @@ button {
 }
 
 .list-item {
-  padding: 20px 10px;
+  padding: 10px 10px;
   border-bottom: solid 1px #ccc;
   box-sizing: border-box;
   cursor: move;
   background: white;
   color: black;
   font-size: 14px;
+  font-weight: bold;
 }
 
 .list-item:last-child {
@@ -70,7 +71,9 @@ button {
 }
 
 small {
+  font-size: 10px;
   font-style: normal;
+  font-weight: normal;
 }
 
 .highlight {

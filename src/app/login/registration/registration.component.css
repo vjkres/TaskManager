@@ -30,3 +30,8 @@
 .col:last-child {
   margin-right: 0;
 }
+
+.error {
+  color: red;
+  font-size: 11px;
+}

@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Email" formControlName="email" type='email'>
+            <input matInput placeholder="Email" formControlName="email" type='email' required>
             <mat-error *ngIf="regForm.controls['email'].hasError('required')">
               Email is <strong>required</strong>
             </mat-error>
@@ -20,7 +20,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password">
+            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password" required>
             <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
@@ -33,7 +33,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Full Name" formControlName="fullName">
+            <input matInput placeholder="Full Name" formControlName="fullName" required>
             <mat-error *ngIf="regForm.controls['fullName'].hasError('required')">
               Full name is <strong>required</strong>
             </mat-error>
@@ -43,7 +43,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Phone" formControlName="phone">
+            <input matInput placeholder="Phone" formControlName="phone" required>
             <mat-error *ngIf="regForm.controls['phone'].hasError('required')">
               Phone is <strong>required</strong> and should be 10 to 12 chars
             </mat-error>

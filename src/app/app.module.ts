@@ -8,7 +8,7 @@ import { MaterialModule } from './material/material.module';
 import { TmnavComponent } from './layout/tmnav/tmnav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserdbComponent } from './home/userdb/userdb.component';
 import { AdmindbComponent } from './home/admindb/admindb.component';
 //services
@@ -19,7 +19,7 @@ import { ProjectService } from './tmservices/project.service';
 import { TaskService } from './tmservices/task.service';
 import { OrgmenuComponent } from './layout/orgmenu/orgmenu.component';
 import { OrgsService } from './tmservices/orgs.service';
-
+import { InviteuserComponent } from './user/inviteuser/inviteuser.component';
 @NgModule({
   declarations: [
     //
@@ -28,7 +28,8 @@ import { OrgsService } from './tmservices/orgs.service';
     RouteComponents,
     UserdbComponent,
     AdmindbComponent,
-    OrgmenuComponent
+    OrgmenuComponent,
+    InviteuserComponent
   ],
   imports: [
     //
@@ -38,8 +39,10 @@ import { OrgsService } from './tmservices/orgs.service';
     MaterialModule,
     ReactiveFormsModule,
     LayoutModule,
-    DragDropModule
+    DragDropModule,
+    FormsModule
   ],
+  entryComponents: [InviteuserComponent],
   providers: [LocalDB, OrgsService, LoginService, UserService, ProjectService, TaskService],
   bootstrap: [AppComponent]
 })

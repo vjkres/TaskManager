@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { ProjectService } from 'src/app/tmservices/project.service';
+import { OrgsService } from 'src/app/tmservices/orgs.service';
 
 @Component({
   selector: 'app-orgmenu',
@@ -10,8 +10,8 @@ export class OrgmenuComponent implements OnInit {
   orgsLinks = [];
   @Output() message = new EventEmitter();
   //
-  constructor(private projectService: ProjectService) {
-    this.orgsLinks = this.projectService.getOrgs();
+  constructor(private orgsService: OrgsService) {
+    this.orgsLinks = this.orgsService.getOrgs();
   }
 
   ngOnInit() {
@@ -19,7 +19,7 @@ export class OrgmenuComponent implements OnInit {
   }
 
   selectedOrgLink() {
-    const obj = this.projectService.getSelectedOrgs();
+    const obj = this.orgsService.getSelectedOrgs();
     this.orgsLinks.map(orgs => {
       orgs.selected = orgs.id === obj;
     });
@@ -27,7 +27,7 @@ export class OrgmenuComponent implements OnInit {
   }
 
   changeORG(obj) {
-    this.projectService.saveSelectedOrgs(obj);
+    this.orgsService.saveSelectedOrgs(obj);
     this.selectedOrgLink();
     //console.log(' db=> ', obj);
   }

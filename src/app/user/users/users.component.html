@@ -1,9 +1,11 @@
 <div class="container">
   <h2>{{sorgsName}} Users</h2>
   <button mat-raised-button (click)='inviteUser()' color='primary'>Invite User</button>
-  <button mat-raised-button (click)='editUser()' color='primary'>Edit User</button>
+  <button mat-raised-button (click)='userDetail()' color='primary'>User Detail</button>
   <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="doneList" class="list" (cdkDropListDropped)="drop($event)">
-    <div [ngClass]="{'highlight': sdata && sdata  === item}" (click)='selectRow(item)' class="list-item" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+    <div [ngClass]="{'highlight': sdata && sdata  === item}" (click)='selectRow(item)' class="list-item" *ngFor="let item of todo" cdkDrag>
+      {{item}} :<small> Java, HTML, C++, PHP </small>
+    </div>
   </div>
 </div>
 
@@ -11,6 +13,8 @@
   <h2>General Users</h2>
   <input matInput placeholder="filter" (keyup)='donefilterEvent($event.target.value)'>
   <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="todoList" class="list">
-    <div class="list-item" *ngFor="let item of done" cdkDrag>{{item}}</div>
+    <div [ngClass]="{'highlight': gsdata && gsdata  === item}" (click)='selectGeneralRow(item)' class="list-item" *ngFor="let item of done" cdkDrag>
+      {{item}} :<small> Java, HTML, C++, PHP </small>
+    </div>
   </div>
 </div>

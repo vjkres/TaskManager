@@ -1,9 +1,12 @@
 .sidenav-container {
   height: 100%;
+
 }
 
 .sidenav {
   width: 150px;
+  background: whitesmoke;
+
 }
 
 /*
@@ -46,4 +49,9 @@
 
 .mat-icon {
   vertical-align: middle;
+}
+
+.mat-list-item {
+  color: black;
+  background: white;
 }

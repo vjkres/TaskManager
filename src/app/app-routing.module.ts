@@ -65,5 +65,7 @@ export const RouteComponents = [
   UserComponent,
   ContactsComponent,
   MenudbComponent,
+  MenudetailComponent,
+
   PageNotFoundComponent
 ];
